@@ -35,4 +35,15 @@ public class GuardaRoupasController {
 	}
 	
 	
+	@GetMapping("/outraforma/{id}")
+	public ResponseEntity<GuardaRoupa> getByIdNew(@PathVariable long id){
+		Optional<GuardaRoupa> roupas = repository.findById(id);
+		
+		if(roupas.isEmpty())
+			return ResponseEntity.badRequest().build();
+		
+		return ResponseEntity.ok(roupas.get());
+				
+	}
+	
 }
